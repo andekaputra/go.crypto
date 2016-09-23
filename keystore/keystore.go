@@ -6,6 +6,7 @@ import "fmt"
 // key derivation function as per Colin Percival's scrypt
 // paper: http://www.tarsnap.com/scrypt/scrypt.pdf
 type Keystore struct {
+	ScryptParams
 	N       int // CPU/memory cost parameter (logN)
 	R       int // block size parameter (octets)
 	P       int // parallelisation parameter (positive int)
@@ -21,6 +22,6 @@ type Keystore struct {
 // The default key length is 256 bits.
 var DefaultKeystore = Keystore{N: 16384, R: 8, P: 1, SaltLen: 16, DKLen: 32}
 
-func (gks Keystore) load(fileName string, kek []byte) error {
+func (ks *Keystore) load(fileName string, kek []byte) error {
 	return fmt.Errorf("test")
 }
